@@ -1,0 +1,32 @@
+h5.parag3 {
+  color: black;
+}
+
+h1.parag3 {
+  color: black;
+}
+
+footer.footer{
+     background-color: #211F35;
+     height: 180px;
+     margin-top: 50px;
+     color: white;
+     font-size: 10px;
+}
+.cont{
+  margin-left: 39%;
+  padding-bottom: 70px;
+  width: 300px;
+}
+
+
+p.textmain {
+  color: #86868B;
+
+}
+.maintext {
+  margin-top: 50px;
+  margin-left: 150px;
+  margin-right: 150px;
+  font-size: 13px;
+}

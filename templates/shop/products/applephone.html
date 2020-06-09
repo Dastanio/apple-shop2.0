@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+	{% if latest_articles_list %}
+
+		{% for a in latest_articles_list %}
+
+
+
+
+				<div class="card" style="width: 18rem; ">
+		  	<img src="{{MEDIA_URL}}{{a.image.url}}" style="width: 287px; height: 
+			300px;"><br>
+		  <div class="card-body">
+		    <h5 class="card-title">{{a.title}}</h5>
+		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		    <p><a href="{% url 'iphonedetail' a.id %}" class="btn btn-primary">Посмотреть подробней</a></p>
+		    <p class="card-text"><small class="text-muted">{{a.pub_date}}</small></p>
+		  </div>
+		</div>
+
+
+
+		{% endfor%}
+
+	{% else %}
+		Статьи не найдены(
+	{% endif %}
+{% endblock %}
