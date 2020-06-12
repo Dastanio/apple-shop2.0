@@ -1,5 +1,66 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content%}
-EMAIL
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 offset-xl-2 py-5">
+                <h1>Feedback</a></h1>
+                <p class="lead"></p>
+
+                <form id="contact-form" action="{% url 'email' %}" role="form" method="post">
+                    {% csrf_token %}
+                    <div class="messages">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <div class="form-group">
+                                    <label for="form_email">Enter your gmail  *</label>
+                                    <input id="form_email" type="email" name="gmail" class="form-control"
+                                        placeholder="Please enter your gmail... *" required="required"
+                                        data-error="Valid email is required.">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+ 
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="form_message">You can describe in detail the products that you want to order don't forget to indicate your address ...*</label>
+                                    <textarea id="form_message" name="message" class="form-control"
+                                        placeholder="Describe your order..*" rows="4" required="required"
+                                        data-error="Please, leave us a message."></textarea>
+                      
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-dark btn-send" value="Send message">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
 {% endblock %}

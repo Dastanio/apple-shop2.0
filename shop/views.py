@@ -1,6 +1,10 @@
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
-from .models import Products, Comments
+from .models import Products
+from django.conf import settings
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.shortcuts import redirect
 
 from django.urls import reverse
 
@@ -13,6 +17,20 @@ def about(request):
 	return render(request, 'shop/about.html')
 
 def email(request):
+
+	if request.method == 'POST':
+		message = request.POST['message']
+		gmail = request.POST['gmail']
+		send_mail('gmail почта клиента:  ' + gmail, 
+		 'Текст сообщения от клиента:  ' + message, 
+		 settings.EMAIL_HOST_USER,
+		 ['dassu8457@gmail.com'], # <--- вот сдесь ты едешь 2 аккаунт  
+		 fail_silently=False)
+
+
+		messages.success(request, ('Ваш заказ успешно принят, доставщик свами свяжется'))
+		return redirect('email')
+
 	return render(request, 'shop/email.html')
 
 #apple
