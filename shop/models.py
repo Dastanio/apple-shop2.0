@@ -3,6 +3,7 @@ import datetime
 
 
 class Product(models.Model):
+	type = models.CharField("Название категории", max_length=100, default='')
 	title = models.CharField('Название товара',max_length = 150)
 	image = models.ImageField('Изображения', upload_to = 'shop/', blank = True)
 	description = models.TextField('Описание')
