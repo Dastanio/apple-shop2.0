@@ -35,8 +35,14 @@ def email(request):
 
 #apple
 def applephone(request):
-	latest_articles_list = Product.objects.order_by('-pub_date')[:5]
-	return render(request, 'shop/products/applephone.html', {'latest_articles_list': latest_articles_list})
+	iphone_list = Product.objects.filter(type='iphone')
+	#.order_by('-pub_date')[:5]
+	return render(request, 'shop/products/applephone.html', {'iphone_list': iphone_list})
+
+def mac(request):
+	mac_list = Product.objects.filter(type='mac')
+	#.order_by('-pub_date')[:5]
+	return render(request, 'shop/products/mac.html', {'mac_list': mac_list})
 
 
 def detail(request, id_iphone):

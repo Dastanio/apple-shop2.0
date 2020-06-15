@@ -7,5 +7,8 @@ urlpatterns = [
 	path('email/', views.email, name = 'email'),
 	path('applephone/', views.applephone, name = 'applephone'),
 	path('applephone/<int:id_iphone>', views.detail, name = 'iphonedetail'),
-	path('applephone/<int:id_iphone>', views.leave_comment, name = 'leave_comment')
+	path('applephone/<int:id_iphone>', views.leave_comment, name = 'leave_comment'),
+	path('mac/', views.mac, name = 'mac'),
+	path('mac/<int:id_iphone>', views.detail, name = 'iphonedetail'),
+	path('mac/<int:id_iphone>', views.leave_comment, name = 'leave_comment'),
 ]
