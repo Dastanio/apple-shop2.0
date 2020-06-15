@@ -1,6 +1,6 @@
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
-from .models import Products
+from .models import Product
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib import messages
@@ -35,13 +35,13 @@ def email(request):
 
 #apple
 def applephone(request):
-	latest_articles_list = Products.objects.order_by('-pub_date')[:5]
+	latest_articles_list = Product.objects.order_by('-pub_date')[:5]
 	return render(request, 'shop/products/applephone.html', {'latest_articles_list': latest_articles_list})
 
 
 def detail(request, id_iphone):
 	try:
-		a = Products.objects.get( id = id_iphone)
+		a = Product.objects.get( id = id_iphone)
 	except:
 		raise Http404('Товар не найден!')
 
@@ -51,7 +51,7 @@ def detail(request, id_iphone):
 
 def leave_comment(request, id_iphone):
 	try:
-		a = Products.objects.get( id = id_iphone)
+		a = Product.objects.get( id = id_iphone)
 	except:
 		raise Http404('Товар не найден!')
 
