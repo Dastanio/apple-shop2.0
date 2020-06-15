@@ -21,7 +21,6 @@ class Product(models.Model):
 
 
 class Comment(models.Model):
-	products = models.ForeignKey(Product, on_delete = models.CASCADE)
 	date = models.DateTimeField('Дата публикации', default= '')
 	author_name = models.CharField('Имя автора', max_length = 60)
 	comment_text = models.TextField('Текст комментария')

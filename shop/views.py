@@ -35,15 +35,8 @@ def email(request):
 
 #apple
 def applephone(request):
-	iphone_list = Product.objects.filter(type='iphone')
-	#.order_by('-pub_date')[:5]
+	iphone_list = Product.objects.filter(type='iphone').order_by('-pub_date')[:5]
 	return render(request, 'shop/products/applephone.html', {'iphone_list': iphone_list})
-
-def mac(request):
-	mac_list = Product.objects.filter(type='mac')
-	#.order_by('-pub_date')[:5]
-	return render(request, 'shop/products/mac.html', {'mac_list': mac_list})
-
 
 def detail(request, id_iphone):
 	try:
@@ -51,7 +44,7 @@ def detail(request, id_iphone):
 	except:
 		raise Http404('Товар не найден!')
 
-	latest_comments_list = a.comment_set.order_by('-id')[:10]
+	latest_comments_list = a.comment_set.filter(product=id_iphone).order_by('-id')[:10]
 
 	return render(request, 'shop/products/iphonedetail.html', {'article': a, 'latest_comments_list': latest_comments_list})
 
